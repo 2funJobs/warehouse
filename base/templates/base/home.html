@@ -1,0 +1,22 @@
+{% extends 'base/main.html' %}
+{% block content %}
+    <div class="shopping-list">
+        <h1>Available Items</h1>
+        {% if items %}
+            <ul>
+                {% for item in items %}
+                    <li>
+                        {{item.item_name}}
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'add_to_cart' item.id %}">Add to Cart</a>
+                        {% else %}
+                            <span>(Eklemek için giriş yapın.)</span>
+                        {% endif %}                        
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Ürünler mevcut değil.</p>
+        {% endif %}
+    </div>
+{% endblock %}
