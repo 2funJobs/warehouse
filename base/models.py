@@ -12,6 +12,7 @@ class Shelf(models.Model):
 class Item(models.Model):
     item_name = models.CharField(max_length=200, unique=True)
     shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE)    
+    item_image = models.ImageField(null=True, default="color_palette.png")
     def __str__(self):
         return self.item_name
     

@@ -97,6 +97,8 @@ def remove_from_cart(request, cart_item_id):
     if not request.user.is_authenticated:
         return redirect('login')
     cart_item = CartItem.objects.get(id=cart_item_id, cart=request.user.cart)
-    cart_item.delete()
+    cart_item.quantity -= 1
+    cart_item.save()
+    if cart_item.quantity == 0:
+        cart_item.delete()
     return redirect('cart')
-

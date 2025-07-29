@@ -1,5 +1,12 @@
-.shopping-list ul{
-    
+html {
+    background-color: #F0F2BD;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 400;
+}
+
+.item-image {
+    width: 200px;
+    height: auto;
 }
 
 
