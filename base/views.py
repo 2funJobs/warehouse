@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser, Profile, Item, Cart, CartItem
 from .forms import CustomUserCreationForm
+from weasyprint import HTML
 
 # authenticate, login, logout: Handle user authentication.
 # UserCreationForm: Provides a form for creating new users based on CustomUser.
@@ -102,3 +103,6 @@ def remove_from_cart(request, cart_item_id):
     if cart_item.quantity == 0:
         cart_item.delete()
     return redirect('cart')
+
+def create_operation_from(request):
+    return render(request, 'base/operation_form.html')

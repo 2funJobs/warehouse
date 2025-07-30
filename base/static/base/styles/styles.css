@@ -2,6 +2,7 @@ html {
     background-color: #F0F2BD;
     font-family: "Titillium Web", sans-serif;
     font-weight: 400;
+    font-size: 18px;
 }
 
 .item-image {
@@ -10,3 +11,117 @@ html {
 }
 
 
+.logo{
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 500;
+    font-size: 7rem;
+    margin-bottom: 0.2rem;
+    margin-left: 3rem;
+}
+
+.line{
+    height: 4px;
+    width: 50rem;
+    background-color: #000;
+    border: none;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+}
+
+#name{
+    position: absolute;
+    top: 6rem;
+    right: 3rem;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+#tag{
+    position: absolute;
+    top: 8rem;
+    right: 3rem;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+#info{
+    height: 3px;
+    width: 20rem;
+    background-color: #000;
+    border: none;
+    position: absolute;
+    top: 10rem;
+    right: 3rem;
+}
+
+.about{
+    position: absolute;
+    top: 10.5rem;
+    right: 5rem;
+    font-size: 1.2rem;
+}
+
+.customer-info{
+    margin-left: 3rem;
+}
+
+#form-name{
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#address{
+    margin-bottom: 5rem;
+}
+
+table{
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+#order-note{
+    margin-top: 5rem;
+}
+
+#constant{
+    text-align: center;
+    font-size: small;
+}
+
+hr{
+    height: 4px;
+    width: 80%;
+    background-color: #000;
+    border: none;
+    text-align: center;
+}
+
+@media print {
+    hr {
+        border-top: 4px solid black;
+        visibility: visible;
+    }
+
+    .line{
+        border-top: 2px solid black;
+        width: 50%;
+        visibility: visible;
+    }
+}
+
+.header{
+    margin: 20px;
+}
+
+.body{
+    margin: 20px;
+}
