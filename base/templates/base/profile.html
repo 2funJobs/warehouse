@@ -1,8 +1,8 @@
 {% extends 'base/main.html' %}
 {% block content %}
-    <h1>Profile</h1>
+    <h1>Profil</h1>
     <p>Email: {{request.user.email}}</p>
-    <p>Address: {{profile.address|default:"Adres bilgisi girilmemiş."}}</p>
-    <p>Phone Number: {{profile.phone_number|default:"Telofon bilgisi girilmemiş."}}</p>
-    <a href="{% url 'edit_profile' %}">Edit Profile</a> | <a href="{% url 'logout' %}">Logout</a>
+    <p>Adres: {{profile.address|default:"Adres bilgisi girilmemiş."}}</p>
+    <p>Telefon Numarası: {{profile.phone_number|default:"Telefon bilgisi girilmemiş."}}</p>
+    <a href="{% url 'edit_profile' %}">Profili Düzenle</a> | <a href="{% url 'logout' %}">Çıkış</a>
 {% endblock %}

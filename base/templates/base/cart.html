@@ -1,12 +1,12 @@
 {% extends 'base/main.html' %}
 {% block content %}
-    <h1>Shoping Cart</h1>
+    <h1>Sepet</h1>
     {% if cart_items %}
         <ul>
         {% for item in cart_items %}
             <li>
-                {{item.item.item_name}} (Qty: {{item.quantity}})-
-                <a href="{% url 'remove_from_cart' item.id %}">Remove</a>
+                {{item.item.item_name}} (Adt: {{item.quantity}})-
+                <a href="{% url 'remove_from_cart' item.id %}">Kaldır</a>
             </li>
         {% endfor %}
         </ul>
