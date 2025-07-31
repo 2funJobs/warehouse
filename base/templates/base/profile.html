@@ -1,8 +1,11 @@
 {% extends 'base/main.html' %}
 {% block content %}
+<div class="profile-card">
     <h1>Profil</h1>
-    <p>Email: {{request.user.email}}</p>
-    <p>Adres: {{profile.address|default:"Adres bilgisi girilmemiş."}}</p>
-    <p>Telefon Numarası: {{profile.phone_number|default:"Telefon bilgisi girilmemiş."}}</p>
-    <a href="{% url 'edit_profile' %}">Profili Düzenle</a> | <a href="{% url 'logout' %}">Çıkış</a>
+    <p>Email: {{ request.user.email }}</p>
+    <p>Adres: {{ profile.address|default:"Adres bilgisi girilmemiş." }}</p>
+    <p>Telefon Numarası: {{ profile.phone_number|default:"Telefon bilgisi girilmemiş." }}</p>
+    <a href="{% url 'edit_profile' %}">Profili Düzenle</a>
+    <a href="{% url 'logout' %}">Çıkış</a>
+</div>
 {% endblock %}

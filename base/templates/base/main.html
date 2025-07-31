@@ -17,11 +17,11 @@
 
   <body>
     <header>
-        <h1>WareHouse</h1>
-        <nav>
-            <a href="{% url 'home' %}">Anasayfa</a> |
+        <h1 class="main-logo">WareHouse</h1>
+        <nav class="navbar">
+            <a href="{% url 'home' %}" id="anasayfa">Anasayfa</a> |
             {% if request.user.is_authenticated %}
-                <a href="{% url 'profile' %}">Profil</a> |
+                <a href="{% url 'profile' %}" class="nav-button">Profil</a> |
                 <a href="{% url 'cart' %}">Sepet</a> |
                 <a href="{% url 'logout' %}">Çıkış</a>
             {% else %}
