@@ -1,17 +1,19 @@
 {% extends 'base/main.html' %}
 {% block content %}
+<div class="cart-card">
     <h1>Sepet</h1>
     {% if cart_items %}
         <ul>
         {% for item in cart_items %}
             <li>
-                {{item.item.item_name}} (Adt: {{item.quantity}})-
+                {{ item.item.item_name }} (Adt: {{ item.quantity }})
                 <a href="{% url 'remove_from_cart' item.id %}">Kaldır</a>
             </li>
         {% endfor %}
         </ul>
+        <a href="{% url 'home' %}" class="checkout-link">Siparişi Tamamla</a>
     {% else %}
         <p>Sepetiniz boş.</p>
     {% endif %}
-    <a href="{% url 'home' %}">Siparişi Tamamla</a>
+</div>
 {% endblock %}

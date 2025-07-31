@@ -210,16 +210,25 @@ header {
   }
 }
 /* Home html */
+
+#products{
+  font-size: 3rem;
+  color: black;
+}
+
 .product-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   padding: 20px;
+  margin: 2rem;
 }
 
 .shopping-list {
   background-color: #fff8dc; /* very light beige */
   border: 2px solid #d2b48c; /* tan */
+  font-size: 1.2rem;
+  font-weight: 700;
   border-radius: 10px;
   padding: 15px;
   text-align: center;
@@ -285,6 +294,7 @@ header {
 .profile-card p {
   margin: 10px 0;
   font-size: 1.05em;
+
 }
 
 .profile-card a {
@@ -355,4 +365,188 @@ header {
 
 .edit-profile-card a:hover {
   text-decoration: underline;
+}
+
+/* register.html */
+
+.register-card {
+  background-color: #fff8dc;
+  border: 2px solid #d2b48c;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 500px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);
+  color: #4b3621;
+}
+
+.register-card h1 {
+  text-align: center;
+  color: #8b5e3c;
+}
+
+.register-card form {
+  margin-top: 20px;
+}
+
+.register-card form p {
+  margin-bottom: 15px;
+}
+
+.register-card button {
+  background-color: #8b5e3c;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-card button:hover {
+  background-color: #a9744f;
+}
+
+/* Login part */
+
+.login-card {
+  background-color: #fff8dc;
+  border: 2px solid #d2b48c;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 450px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);
+  color: #4b3621;
+}
+
+.login-card h1 {
+  text-align: center;
+  color: #8b5e3c;
+}
+
+.login-card form {
+  margin-top: 20px;
+}
+
+.login-card p {
+  margin-bottom: 15px;
+  font-size: 1em;
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d2b48c;
+  border-radius: 6px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.login-card button {
+  background-color: #8b5e3c;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.login-card button:hover {
+  background-color: #a9744f;
+}
+
+.login-card a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #8b5e3c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-card a:hover {
+  text-decoration: underline;
+}
+
+.login-card .error-message {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* cart.html */
+
+.cart-card {
+  background-color: #fff8dc;
+  border: 2px solid #d2b48c;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 600px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);
+  color: #4b3621;
+}
+
+.cart-card h1 {
+  text-align: center;
+  color: #8b5e3c;
+}
+
+.cart-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart-card li {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d2b48c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-card a {
+  background-color: #8b5e3c;
+  color: white;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cart-card a:hover {
+  background-color: #a9744f;
+}
+
+.cart-card p {
+  text-align: center;
+  font-style: italic;
+}
+
+.cart-card .checkout-link {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  background-color: #8b5e3c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s ease;
+}
+
+.cart-card .checkout-link:hover {
+  background-color: #a9744f;
 }

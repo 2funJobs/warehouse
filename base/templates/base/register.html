@@ -1,9 +1,11 @@
 {% extends 'base/main.html' %}
 {% block content %}
+<div class="register-card">
     <h1>Kayıt</h1>
     <form method="POST">
         {% csrf_token %}
-        {{form.as_p}}
+        {{ form.as_p }}
         <button type="submit">Kayıt</button>
     </form>
+</div>
 {% endblock %}

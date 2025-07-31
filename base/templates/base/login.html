@@ -1,14 +1,20 @@
 {% extends 'base/main.html' %}
 {% block content %}
+<div class="login-card">
     <h1>Giriş</h1>
     {% if error %}
-        <p style="color:red;">{{error}}</p>
+        <p class="error-message">{{ error }}</p>
     {% endif %}
     <form method="POST">
         {% csrf_token %}
-        <p>Email: <input type="text" name="username"></p>
-        <p>Şifre: <input type="password" name="password"></p>
+        <p>Email:
+            <input type="text" name="username">
+        </p>
+        <p>Şifre:
+            <input type="password" name="password">
+        </p>
         <button type="submit">Giriş</button>
     </form>
-    <a href="{% url 'register' %}">Kayıt</a>
+    <a href="{% url 'register' %}">Hesabınız yok mu? Kayıt olun</a>
+</div>
 {% endblock %}
