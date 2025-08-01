@@ -20,6 +20,8 @@ class Item(models.Model):
 
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
+    name = models.CharField(max_length=200, null=True)
+    surname =  models.CharField(max_length=200, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

@@ -40,8 +40,7 @@
 
         <div class="customer-info">
             <h3 id="form-name">Operasyon Formu</h3>
-            <h3>Müşteri Adı-Soyadı:</h3>
-            <p>{{request.user.email}}</p>
+            <h3>Müşteri Adı-Soyadı:</h3>{{ request.user.name }} {{ request.user.surname }}
             <h3>Sipariş Tarih ve Saati:</h3>
             <h3>Sipariş Numarası:</h3>
             <h3 id="address">Adres:</h3>
