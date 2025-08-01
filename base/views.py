@@ -33,7 +33,7 @@ def register(request):
             login(request, user)
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     context = {'form':form}
     return render(request, 'base/register.html', context)
 
@@ -79,9 +79,15 @@ def edit_profile(request):
 def cart_view(request):
     if not request.user.is_authenticated:
         return redirect('login')
+    cart, created = Cart.objects.get_or_create(user=request.user)
     cart = request.user.cart
     cart_items = CartItem.objects.filter(cart=cart)
-    return render(request, 'base/cart.html', {'cart_items':cart_items})
+    total_price = 0
+    for item in cart_items:
+        total_price += int(item.quantity * item.item.item_price)
+    # total_price = sum(item.item.item_price * item.quantity for item in cart_items)
+    context = {'cart_items':cart_items, 'total_price': total_price}
+    return render(request, 'base/cart.html', context)
 
 def add_to_cart(request, item_id):
     if not request.user.is_authenticated:
@@ -109,11 +115,3 @@ def create_operation_from(request):
 
 def make_order(request):
     pass
-
-def get_cart_total(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    cart = request.user.cart
-    cart_items = CartItem.objects.filter(cart=cart)
-    total_cart_value = sum(Item.item_price * item.quantity for item in cart_items if item.item_price and item.quantity)
-    return render(request, 'base/cart.html', {'cart_items':cart_items})

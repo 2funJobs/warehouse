@@ -15,7 +15,7 @@
                 <a href="{% url 'remove_from_cart' item.id %}">Kaldır</a>
             </li>
         {% endfor %}
-        <p id="order">Sipariş Toplamı: </p> 
+        <p id="order">Sipariş Toplamı: {{ total_price }}₺</p> 
         </ul>
         <a href="{% url 'home' %}" class="checkout-link">Siparişi Tamamla</a>
     {% else %}
