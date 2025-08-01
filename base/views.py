@@ -52,6 +52,7 @@ def user_login(request):
             return render(request, 'base/login.html', {'error': 'Geçersiz email veya şifre !'})
     return render(request, 'base/login.html')
 
+
 def user_logout(request):
     logout(request)
     return redirect('home')
