@@ -157,7 +157,7 @@ td{
     }
 }
 
-/* main.html */
+/* main.html ***********************************************************************************************/
 header {
   background-color: #8b5e3c; /* medium brown */
   text-align: center;
@@ -209,11 +209,12 @@ header {
     margin: 8px 0;
   }
 }
-/* Home html */
+/* Home html ***********************************************************************************************/
 
 #products{
   font-size: 3rem;
   color: black;
+  margin-left: 2rem;
 }
 
 .product-container {
@@ -234,6 +235,12 @@ header {
   text-align: center;
   box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
+}
+
+.shopping-list p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .shopping-list:hover {
@@ -271,7 +278,7 @@ header {
   color: #555;
 }
 
-/* Profile */
+/* Profile ***********************************************************************************/
 
 .profile-card {
   background-color: #fff8dc; /* very light beige */
@@ -314,7 +321,7 @@ header {
   background-color: #a9744f;
 }
 
-/* edit-profile */
+/* edit-profile ********************************************************************************************/
 
 .edit-profile-card {
   background-color: #fff8dc; /* light beige */
@@ -367,7 +374,7 @@ header {
   text-decoration: underline;
 }
 
-/* register.html */
+/* register.html ***********************************************************************************************/
 
 .register-card {
   background-color: #fff8dc;
@@ -408,7 +415,7 @@ header {
   background-color: #a9744f;
 }
 
-/* Login part */
+/* Login part ****************************************************************************/
 
 .login-card {
   background-color: #fff8dc;
@@ -480,7 +487,7 @@ header {
   text-align: center;
 }
 
-/* cart.html */
+/* cart.html *************************************************************************************/
 
 .cart-card {
   background-color: #fff8dc;
@@ -491,6 +498,18 @@ header {
   max-width: 600px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);
   color: #4b3621;
+}
+
+.cart-card p {
+  font-weight: 700;
+}
+
+.cart-card #order {
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  font-weight: 900;
+  font-style: italic;
 }
 
 .cart-card h1 {
@@ -512,6 +531,12 @@ header {
   align-items: center;
 }
 
+.cart-card img {
+  width: 6rem;
+  height: 6rem;
+  border: 0.3rem solid black;
+}
+
 .cart-card a {
   background-color: #8b5e3c;
   color: white;
@@ -526,8 +551,11 @@ header {
   background-color: #a9744f;
 }
 
-.cart-card p {
+.cart-card #item-count {
   text-align: center;
+  color: #8b5e3c;
+  font-size: 2rem;
+  font-weight: 900;
   font-style: italic;
 }
 

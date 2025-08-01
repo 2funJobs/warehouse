@@ -106,3 +106,14 @@ def remove_from_cart(request, cart_item_id):
 
 def create_operation_from(request):
     return render(request, 'base/operation_form.html')
+
+def make_order(request):
+    pass
+
+def get_cart_total(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    cart = request.user.cart
+    cart_items = CartItem.objects.filter(cart=cart)
+    total_cart_value = sum(Item.item_price * item.quantity for item in cart_items if item.item_price and item.quantity)
+    return render(request, 'base/cart.html', {'cart_items':cart_items})
