@@ -6,12 +6,31 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser, Profile, Item, Cart, CartItem, Order, OrderItem
 from .forms import CustomUserCreationForm
-from weasyprint import HTML
 from django.utils import timezone
+from django.contrib.auth.decorators import user_passes_test
+from django.http import Http404
+from django.http import JsonResponse
 
 # authenticate, login, logout: Handle user authentication.
 # UserCreationForm: Provides a form for creating new users based on CustomUser.
 # .models: Imports your defined models for database operations.
+
+def superuser_required(user):
+    return user.is_authenticated and user.is_superuser
+
+@user_passes_test(superuser_required, login_url='/access-denied/')
+def operation_form_view(request, order_id):
+    order = get_object_or_404(Order, order_id=order_id)
+    context = {
+        'order': order,
+        'user': order.user,  # Assuming Order has a ForeignKey to CustomUser
+    }
+    return render(request, 'base/operation_form.html', context)
+
+@user_passes_test(superuser_required, login_url='/access-denied/')
+def order_list_view(request):
+    orders = Order.objects.all().order_by('-order_date')
+    return render(request, 'base/order_list.html', {'orders': orders})
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:
@@ -128,14 +147,13 @@ def remove_from_cart(request, cart_item_id):
 
 @login_required
 def create_order(request):
-   
     try:
         profile = request.user.profile
         cart = Cart.objects.get(user=request.user)
         cart_items = CartItem.objects.filter(cart=cart)
         
         if not cart_items:
-            return render(request, 'base/home.html')
+            return JsonResponse({'status': 'error', 'message': 'Cart is empty'}, status=400)
 
         # Create a new order
         order = Order.objects.create(user=request.user)
@@ -151,19 +169,39 @@ def create_order(request):
         # Clear the cart after creating the order
         cart_items.delete()
 
-        context = {
-            'profile': profile,
-            'order': order,
-            'user': request.user,
-        }
+        return JsonResponse({'status': 'success', 'message': 'Order created successfully'})
 
-        return render(request, 'base/operation_form.html', context)
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    # try:
+    #     profile = request.user.profile
+    #     cart = Cart.objects.get(user=request.user)
+    #     cart_items = CartItem.objects.filter(cart=cart)
+        
+    #     if not cart_items:
+    #         return render(request, 'base/home.html')
 
-    except Cart.DoesNotExist:
-        return render(request, 'base/home.html')
+    #     # Create a new order
+    #     order = Order.objects.create(user=request.user)
 
-def order_confirmation(request, order_id):
-    order = Order.objects.get(order_id=order_id)
-    order_items = OrderItem.objects.filter(order=order)
-    context =  {'order': order, 'order_items': order_items,}
-    return render(request, 'base/operation_form',)
+    #     # Move cart items to order items
+    #     for cart_item in cart_items:
+    #         OrderItem.objects.create(
+    #             order=order,
+    #             item=cart_item.item,
+    #             quantity=cart_item.quantity,
+    #         )
+
+    #     # Clear the cart after creating the order
+    #     cart_items.delete()
+
+    #     context = {
+    #         'profile': profile,
+    #         'order': order,
+    #         'user': request.user,
+    #     }
+
+    #     return render(request, 'base/operation_form.html', context)
+
+    # except Cart.DoesNotExist:
+    #     return render(request, 'base/home.html')
