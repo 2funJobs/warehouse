@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from . models import Shelf, Item
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Profile, Item, Cart, CartItem
+from .models import CustomUser, Profile, Item, Cart, CartItem, Order, OrderItem
 from .forms import CustomUserCreationForm
 from weasyprint import HTML
+from django.utils import timezone
 
 # authenticate, login, logout: Handle user authentication.
 # UserCreationForm: Provides a form for creating new users based on CustomUser.
@@ -111,8 +113,46 @@ def remove_from_cart(request, cart_item_id):
         cart_item.delete()
     return redirect('cart')
 
-def create_operation_from(request):
-    return render(request, 'base/operation_form.html')
+def create_operation_form(request):
+    user = request.user
+    order = Order.objects.filter(user=user).order_by('-order_date').first()
+    context = {
+        'order': order,
+        'user': user,
+    }
+    return render(request, 'base/operation_form.html', context)
 
-def make_order(request):
-    pass
+@login_required
+def create_order(request):
+    # Get the user's cart
+    try:
+        cart = Cart.objects.get(user=request.user)
+        cart_items = CartItem.objects.filter(cart=cart)
+        
+        if not cart_items:
+            return render(request, 'base/home.html')
+
+        # Create a new order
+        order = Order.objects.create(user=request.user)
+
+        # Move cart items to order items
+        for cart_item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                item=cart_item.item,
+                quantity=cart_item.quantity,
+            )
+
+        # Clear the cart after creating the order
+        cart_items.delete()
+
+        return redirect('operation_form', order=order)
+
+    except Cart.DoesNotExist:
+        return render(request, 'home.html')
+
+def order_confirmation(request, order_id):
+    order = Order.objects.get(order_id=order_id)
+    order_items = OrderItem.objects.filter(order=order)
+    context =  {'order': order, 'order_items': order_items,}
+    return render(request, 'base/operation_form',)

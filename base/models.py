@@ -54,3 +54,32 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"Profile for {self.user.username}"
+    
+class Order(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    order_id = models.CharField(max_length=20, unique=True, editable=False)
+    order_date = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def order_only_date(self):
+        return self.order_date.date()
+
+    def save(self, *args, **kwargs):
+        if not self.order_id:
+            # Generate a unique order ID (e.g., timestamp-based or random)
+            self.order_id = f"ORD-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        super().save(*args, **kwargs)
+
+
+    def __str__(self):
+        return f"Order {self.order_id} by {self.user.email}"
+    
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} {self.item.item_name} in Order {self.order.order_id}"
+ 
