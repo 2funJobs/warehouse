@@ -61,9 +61,14 @@ html {
 }
 
 .customer-info{
-    margin: 0;
-    
+    font-size: 1.2rem;
+    margin-bottom: 6rem;
 }
+
+.customer-info div{
+    margin-bottom: 1rem;
+}
+
 
 #form-name{
     margin-bottom: 0;
@@ -72,6 +77,13 @@ html {
     font-weight: 300;
     font-style: italic;
     color: rgba(0, 0, 0, 0.5);
+}
+
+.inline-item {
+  display: inline;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
 }
 
 #address{

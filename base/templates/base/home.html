@@ -15,7 +15,7 @@
                     {% if request.user.is_authenticated %}
                         <a href="{% url 'add_to_cart' item.id %}">Sepete ekle</a>
                     {% else %}
-                        <span>(Eklemek için giriş yapın.)</span>
+                        <span>(Sepete eklemek için giriş yapın.)</span>
                     {% endif %}                        
                 </div>
             {% endfor %}

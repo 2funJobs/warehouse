@@ -77,7 +77,11 @@ def edit_profile(request):
             return redirect('profile')
     else:    
         form = ProfileEditForm(instance=profile)
-    return render(request, 'base/edit_profile.html', {'form': form})
+    context = {
+        'form': form,
+        'profile': profile
+        }
+    return render(request, 'base/edit_profile.html', context)
     
 def cart_view(request):
     if not request.user.is_authenticated:
@@ -126,6 +130,7 @@ def remove_from_cart(request, cart_item_id):
 def create_order(request):
    
     try:
+        profile = request.user.profile
         cart = Cart.objects.get(user=request.user)
         cart_items = CartItem.objects.filter(cart=cart)
         
@@ -147,6 +152,7 @@ def create_order(request):
         cart_items.delete()
 
         context = {
+            'profile': profile,
             'order': order,
             'user': request.user,
         }
