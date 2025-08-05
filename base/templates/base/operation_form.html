@@ -40,47 +40,30 @@
 
         <div class="customer-info">
             <h3 id="form-name">Operasyon Formu</h3>
-            <h3>Müşteri Adı-Soyadı:</h3>{{ request.user.name }} {{ request.user.surname }}
-            <h3>Sipariş Tarih ve Saati:{{ order.order_only_date|date:"d-m-Y" }}</h3>
-            <h3>Sipariş Numarası: {{order.order_id}}
-                {% for item in order.order_items.all %}
-                <li>{{ item.item.item_name }}</li>
-                    {% endfor %}</h3>
-            <h3 id="address">Adres: </h3>  
+            <h3>Müşteri Adı-Soyadı: </h3>
+                <span>{{ request.user.name }} {{ request.user.surname }}</span>
+            <h3>Sipariş Tarih ve Saati: </h3>
+                <span>{{ order.order_only_date|date:"d-m-Y" }}</span>
+            <h3>Sipariş Numarası: </h3>
+                <span>{{order.order_id}}</span>
+            <h3 id="address">Adres: </h3> 
+                <span>{{ requset.user.address }}</span> 
         </div>
 
         <div class="table">
             <table border="1">
                 <tr>
                     <th style="width: 1rem;">Miktar</th>
-                    <th style="width: 35rem;">Ürünler</th>
+                    <th style="width: 25rem;">Ürünler</th>
                     <th style="width: 5rem;">Raf Numarası</th>
                 </tr>
-                <tr>
-                    <td>fsdf,fsdf</td>
-                    <td>fsdf,fsdf</td>
-                    <td>fsdf,fsdfsd</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>fsdfsd,fsdfsd</td>
-                    <td>fsdfsd,fsdfsd</td>
-                    <td>dfssd,fdsfsd</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                {% for item in order.order_items.all %}
+                    <tr>
+                        <td style="font-weight: 600;">{{ item.quantity }}x</td>
+                        <td>{{ item.item.item_name }}</td>
+                        <td>{{ item.item.shelf }}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
         <p id="constant">İlgili bölümde saklanması zorunludur.</p>

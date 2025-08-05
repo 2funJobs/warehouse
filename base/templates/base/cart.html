@@ -17,7 +17,7 @@
         {% endfor %}
         <p id="order">Sipariş Toplamı: {{ total_price }}₺</p> 
         </ul>
-        <a href="{% url 'operation_form' %}" class="checkout-link">Siparişi Tamamla</a>
+        <a href="{% url 'create_order' %}" class="checkout-link">Siparişi Tamamla</a>
     {% else %}
         <p>Sepetiniz boş.</p>
     {% endif %}

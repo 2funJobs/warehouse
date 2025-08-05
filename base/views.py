@@ -113,18 +113,18 @@ def remove_from_cart(request, cart_item_id):
         cart_item.delete()
     return redirect('cart')
 
-def create_operation_form(request):
-    user = request.user
-    order = Order.objects.filter(user=user).order_by('-order_date').first()
-    context = {
-        'order': order,
-        'user': user,
-    }
-    return render(request, 'base/operation_form.html', context)
+# def create_operation_form(request):
+#     user = request.user
+#     order = Order.objects.filter(user=user).order_by('-order_date').first()
+#     context = {
+#         'order': order,
+#         'user': user,
+#     }
+#     return render(request, 'base/operation_form.html', context)
 
 @login_required
 def create_order(request):
-    # Get the user's cart
+   
     try:
         cart = Cart.objects.get(user=request.user)
         cart_items = CartItem.objects.filter(cart=cart)
@@ -146,10 +146,15 @@ def create_order(request):
         # Clear the cart after creating the order
         cart_items.delete()
 
-        return redirect('operation_form', order=order)
+        context = {
+            'order': order,
+            'user': request.user,
+        }
+
+        return render(request, 'base/operation_form.html', context)
 
     except Cart.DoesNotExist:
-        return render(request, 'home.html')
+        return render(request, 'base/home.html')
 
 def order_confirmation(request, order_id):
     order = Order.objects.get(order_id=order_id)
