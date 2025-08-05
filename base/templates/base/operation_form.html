@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Caveat:wght@400..700&family=PT+Sans+Narrow:wght@400;700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Caveat:wght@400..700&family=PT+Sans+Narrow:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'base/styles/styles.css' %}">
+        
+        <title>Document</title>
+    </head>
+    <body>
+        <style>   
+            html {
+                background-color: white;
+                font-family: "Roboto", sans-serif;
+                font-weight: 400;
+            }
+        </style>
+        <div class="container">
+            <div class="header">
+                <h1 class="logo">WareHouse</h1>
+                <hr class="line"/>
+                <hr class="line"/>
+            </div>
+            <div class="body">
+                <h4 id="name">Tufan İŞLER</h4>
+                <h5 id="tag">Sipariş Sorumlusu</h5>
+                <hr id="info"/>
+                <p class="about">
+                    tufanisler08@gmail.com<br>
+                    Alemdağ cad. Ümraniye/IST<br>
+                    WareHouse Hediyelik
+                </p>
+            </div>
+        </div>   
+
+        <div class="customer-info">
+            <h3 id="form-name">Operasyon Formu</h3>
+            <h3>Müşteri Adı-Soyadı:</h3>{{ request.user.name }} {{ request.user.surname }}
+            <h3>Sipariş Tarih ve Saati:{{ order.order_only_date|date:"d-m-Y" }}</h3>
+            <h3>Sipariş Numarası: {{order.order_id}}
+                {% for item in order.order_items.all %}
+                <li>{{ item.item.item_name }}</li>
+                    {% endfor %}</h3>
+            <h3 id="address">Adres: </h3>  
+        </div>
+
+        <div class="table">
+            <table border="1">
+                <tr>
+                    <th style="width: 1rem;">Miktar</th>
+                    <th style="width: 35rem;">Ürünler</th>
+                    <th style="width: 5rem;">Raf Numarası</th>
+                </tr>
+                <tr>
+                    <td>fsdf,fsdf</td>
+                    <td>fsdf,fsdf</td>
+                    <td>fsdf,fsdfsd</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>fsdfsd,fsdfsd</td>
+                    <td>fsdfsd,fsdfsd</td>
+                    <td>dfssd,fdsfsd</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <p id="constant">İlgili bölümde saklanması zorunludur.</p>
+    </body>
+</html>
+

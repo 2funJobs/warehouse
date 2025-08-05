@@ -1,0 +1,25 @@
+{% extends 'base/main.html' %}
+{% load calculation_filters %}
+{% block content %}
+
+<div class="cart-card">
+    <h1>Sepet</h1>
+    {% if cart_items %}
+        <ul>
+        {% for item in cart_items %}
+            <li>
+                <p id="item-count">{{ item.quantity }}x</p>
+                <img src="{{ item.item.item_image.url }}" alt="{{ item.item_name }}">
+                {{ item.item.item_name }}
+                <p>{{ item.item.item_price|multiply:item.quantity }}₺</p>
+                <a href="{% url 'remove_from_cart' item.id %}">Kaldır</a>
+            </li>
+        {% endfor %}
+        <p id="order">Sipariş Toplamı: {{ total_price }}₺</p> 
+        </ul>
+        <a href="{% url 'operation_form' %}" class="checkout-link">Siparişi Tamamla</a>
+    {% else %}
+        <p>Sepetiniz boş.</p>
+    {% endif %}
+</div>
+{% endblock %}

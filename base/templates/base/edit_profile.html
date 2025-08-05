@@ -1,0 +1,12 @@
+{% extends 'base/main.html' %}
+{% block content %}
+<div class="edit-profile-card">
+    <h1>Edit Profile</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'profile' %}">← Back to Profile</a>
+</div>
+{% endblock %}

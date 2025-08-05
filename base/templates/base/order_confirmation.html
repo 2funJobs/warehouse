@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <h1>Order Confirmation</h1>
+    <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+    <p><strong>Order Date:</strong> {{ order.order_date|date:"F d, Y H:i" }}</p>
+    <h2>Items Ordered:</h2>
+    <ul>
+        {% for order_item in order_items %}
+            <li>{{ order_item.quantity }} x {{ order_item.item.item_name }} (Price: ${{ order_item.price_at_time }})</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Status:</strong> {{ order.get_status_display }}</p>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
