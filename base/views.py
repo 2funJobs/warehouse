@@ -173,6 +173,7 @@ def create_order(request):
 
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
     # try:
     #     profile = request.user.profile
     #     cart = Cart.objects.get(user=request.user)

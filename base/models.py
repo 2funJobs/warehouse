@@ -67,7 +67,7 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         if not self.order_id:
             # Generate a unique order ID (e.g., timestamp-based or random)
-            self.order_id = f"ORD-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            self.order_id = f"{datetime.now().strftime('%H%M%S')}"
         super().save(*args, **kwargs)
 
 

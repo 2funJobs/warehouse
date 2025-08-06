@@ -27,12 +27,12 @@
                   <a href="{% url 'profile' %}" class="nav-button">Profil</a> |
                   <a href="{% url 'cart' %}">Sepet</a> |
                 {% else %}
-                  <a href="{% url 'order_list' %}">Geçmiş Siparişler</a> |
+                  <a href="{% url 'order_list' %}">Sipariş Listesi</a> |
                 {% endif %}
-                <a href="{% url 'logout' %}">Çıkış</a>
+              <a href="{% url 'logout' %}">Çıkış</a>
             {% else %}
-                <a href="{% url 'login' %}">Giriş</a> |
-                <a href="{% url 'register' %}">Kayıt</a>
+              <a href="{% url 'login' %}">Giriş</a> |
+              <a href="{% url 'register' %}">Kayıt</a>
             {% endif %}
         </nav>
     </header>

@@ -9,16 +9,14 @@
     a:hover { text-decoration: underline; }
 </style>
 {% block content %}
-    <h1>Past Order Forms</h1>
-    <ul>
+    <h1>Siparişler</h1>
+    <ol class="navbar" style="font-size: 1.2rem;" >
         {% for order in orders %}
-            <li>
-                <a href="{% url 'operation_form' order_id=order.order_id %}">
-                    Operasyon Formu - {{ order.order_id }}
-                </a>
+            <li style="margin-bottom: 1.5rem;">
+                <a href="{% url 'operation_form' order_id=order.order_id %}">Operasyon Formu {{ order.order_id }}</a>
             </li>
         {% empty %}
-            <li>No orders found.</li>
+            <li>Bekleyen sipariş yok.</li>
         {% endfor %}
-    </ul>
+    </ol>
 {% endblock content %}
