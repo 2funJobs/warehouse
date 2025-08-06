@@ -156,7 +156,7 @@ def create_order(request):
             return JsonResponse({'status': 'error', 'message': 'Cart is empty'}, status=400)
 
         # Create a new order
-        order = Order.objects.create(user=request.user)
+        order = Order.objects.create(profile=profile)
 
         # Move cart items to order items
         for cart_item in cart_items:
@@ -173,6 +173,12 @@ def create_order(request):
 
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
+def remove_order_form(request, order_id):
+    order_form = get_object_or_404(Order, order_id=order_id)
+    order_form.delete()
+    return redirect('order_list')
+
 
     # try:
     #     profile = request.user.profile
