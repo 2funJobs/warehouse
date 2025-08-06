@@ -2,6 +2,8 @@
 {% block content %}
 <div class="profile-card">
     <h1>Profil</h1>
+    <p>İsim: {{ profile.user.name }}</p>
+    <p>Soyisim: {{ profile.user.surname }}</p>
     <p>Email: {{ request.user.email }}</p>
     <p>Adres: {{ profile.address|default:"Adres bilgisi girilmemiş." }}</p>
     <p>Telefon Numarası: {{ profile.phone_number|default:"Telefon bilgisi girilmemiş." }}</p>

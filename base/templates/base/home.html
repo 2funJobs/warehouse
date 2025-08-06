@@ -1,4 +1,5 @@
 {% extends 'base/main.html' %}
+{% load user_tags %}
 {% block content %}
 <h1 id="products">Mevcut Ürünler</h1>
     <div class="product-container">
@@ -12,10 +13,10 @@
                     <img src="/static/base/images/default.png" alt="resim paleti" class="item-image">
                     {% endif %}
                     <p>{{ item.item_price }}₺</p>
-                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_authenticated and not is_super %}
                         <a href="{% url 'add_to_cart' item.id %}">Sepete ekle</a>
                     {% else %}
-                        <span>(Eklemek için giriş yapın.)</span>
+                        <span>(Sepete eklemek için giriş yapın.)</span>
                     {% endif %}                        
                 </div>
             {% endfor %}

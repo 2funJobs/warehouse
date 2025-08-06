@@ -1,0 +1,22 @@
+{% extends 'base/main.html' %}
+<title>Past Order Forms</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { text-align: center; }
+    ul { list-style-type: none; padding: 0; }
+    li { margin: 10px 0; }
+    a { text-decoration: none; color: #007bff; }
+    a:hover { text-decoration: underline; }
+</style>
+{% block content %}
+    <h1>Siparişler</h1>
+    <ol class="navbar" style="font-size: 1.2rem;" >
+        {% for order in orders %}
+            <li style="margin-bottom: 1.5rem;">
+                <a href="{% url 'operation_form' order_id=order.order_id %}">Operasyon Formu {{ order.order_id }}</a>
+            </li>
+        {% empty %}
+            <li>Bekleyen sipariş yok.</li>
+        {% endfor %}
+    </ol>
+{% endblock content %}
