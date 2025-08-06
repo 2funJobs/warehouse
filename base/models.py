@@ -59,6 +59,7 @@ class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     order_id = models.CharField(max_length=20, unique=True, editable=False)
     order_date = models.DateTimeField(auto_now_add=True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
 
     @property
     def order_only_date(self):

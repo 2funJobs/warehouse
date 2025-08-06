@@ -41,7 +41,7 @@
         <div class="customer-info">
             <h3 id="form-name" style="margin-bottom: 1rem;">Operasyon Formu</h3>
             <div>
-                <span class="inline-item">Müşteri Adı-Soyadı:</span> <span>{{ request.user.name }} {{ request.user.surname }}</span>
+                <span class="inline-item">Müşteri Adı-Soyadı:</span> <span>{{ order.profile.user.name }} {{ order.profile.user.surname }}</span>
             </div>
             <div>
                 <span class="inline-item">Sipariş Tarih ve Saati:</span> <span>{{ order.order_only_date|date:"d/m/Y" }}</span>
@@ -50,7 +50,7 @@
                 <span class="inline-item">Sipariş Numarası:</span> <span>{{order.order_id}}</span>
             </div>
             <div>
-                <span class="inline-item">Müşteri Adresi:</span> <span>{{ profile.address }}</span>
+                <span class="inline-item">Müşteri Adresi:</span> <span>{{ order.profile.address }}</span>
             </div>
             <!-- <h3>Müşteri Adı-Soyadı: </h3>
                 <span>{{ request.user.name }} {{ request.user.surname }}</span>

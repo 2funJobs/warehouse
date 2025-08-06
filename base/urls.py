@@ -18,4 +18,5 @@ urlpatterns = [
     # path('admin_template/', views.admin_only_view, name='admin_temp'),
     path('orders/', views.order_list_view, name='order_list'),
     path('operation_form/<str:order_id>/', views.operation_form_view, name='operation_form'),
+   path('remove_order_form/<str:order_id>/', views.remove_order_form, name='remove_form'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

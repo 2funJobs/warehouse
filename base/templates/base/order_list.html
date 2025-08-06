@@ -14,9 +14,10 @@
         {% for order in orders %}
             <li style="margin-bottom: 1.5rem;">
                 <a href="{% url 'operation_form' order_id=order.order_id %}">Operasyon Formu {{ order.order_id }}</a>
+                <a href="{% url 'remove_form' order_id=order.order_id %}" style="background-color: red;">Formu Sil</a>
             </li>
         {% empty %}
-            <li>Bekleyen sipariş yok.</li>
+            <p>Bekleyen sipariş yok.</p>
         {% endfor %}
     </ol>
 {% endblock content %}
