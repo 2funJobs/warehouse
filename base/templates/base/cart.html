@@ -15,9 +15,9 @@
                 <a href="{% url 'remove_from_cart' item.id %}">Kaldır</a>
             </li>
         {% endfor %}
-        <p id="order">Sipariş Toplamı: {{ total_price }}₺</p> 
+        <p id="order">Sipariş Toplamı: </p> 
         </ul>
-        <a href="{% url 'operation_form' %}" class="checkout-link">Siparişi Tamamla</a>
+        <a href="{% url 'home' %}" class="checkout-link">Siparişi Tamamla</a>
     {% else %}
         <p>Sepetiniz boş.</p>
     {% endif %}

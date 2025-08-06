@@ -1,12 +1,13 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+
+User = get_user_model()
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
-        model = CustomUser
-        fields = ('name','surname', 'email', 'password1', 'password2')
+        model = User
+        fields = ('email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

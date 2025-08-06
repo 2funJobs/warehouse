@@ -40,13 +40,11 @@
 
         <div class="customer-info">
             <h3 id="form-name">Operasyon Formu</h3>
-            <h3>Müşteri Adı-Soyadı:</h3>{{ request.user.name }} {{ request.user.surname }}
-            <h3>Sipariş Tarih ve Saati:{{ order.order_only_date|date:"d-m-Y" }}</h3>
-            <h3>Sipariş Numarası: {{order.order_id}}
-                {% for item in order.order_items.all %}
-                <li>{{ item.item.item_name }}</li>
-                    {% endfor %}</h3>
-            <h3 id="address">Adres: </h3>  
+            <h3>Müşteri Adı-Soyadı:</h3>
+            <p>{{request.user.email}}</p>
+            <h3>Sipariş Tarih ve Saati:</h3>
+            <h3>Sipariş Numarası:</h3>
+            <h3 id="address">Adres:</h3>
         </div>
 
         <div class="table">

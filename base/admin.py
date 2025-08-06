@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Shelf, Item, Profile, CustomUser, CartItem, Order
+from . models import Shelf, Item, Profile, CustomUser, CartItem
 # Register your models here.
 
 @admin.register(Shelf)
@@ -17,7 +17,3 @@ class ProfileAdmin(admin.ModelAdmin):
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ('email',)
-
-@admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ('order_id',)
