@@ -1,7 +1,8 @@
 {% extends 'base/main.html' %}
 {% load calculation_filters %}
 {% block content %}
-
+{% load static %}
+{% load static slugify_tags %}
 <div class="cart-card">
     <h1>Sepet</h1>
     {% if cart_items %}
@@ -9,7 +10,7 @@
         {% for item in cart_items %}
             <li>
                 <p id="item-count">{{ item.quantity }}x</p>
-                <img src="{{ item.item.item_image.url }}" alt="{{ item.item_name }}">
+                <img src="{% static '' %}base/images/{{ item.item.item_name|slugify }}.png" alt="{{ item.item_name }}">
                 {{ item.item.item_name }}
                 <p>{{ item.item.item_price|multiply:item.quantity }}₺</p>
                 <a href="{% url 'remove_from_cart' item.id %}">Kaldır</a>

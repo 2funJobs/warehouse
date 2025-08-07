@@ -169,7 +169,7 @@ def create_order(request):
         # Clear the cart after creating the order
         cart_items.delete()
 
-        return JsonResponse({'status': 'success', 'message': 'Order created successfully'})
+        return redirect('home')
 
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
